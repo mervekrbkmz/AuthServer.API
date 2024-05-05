@@ -12,6 +12,7 @@ namespace AuthServer.Data.Repositories
   public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
   {
 
+
     private readonly DbContext _dbContext;
     private readonly DbSet<TEntity> _dbSet;
 
@@ -39,7 +40,7 @@ namespace AuthServer.Data.Repositories
       if (entity != null)
       {
         _dbContext.Entry(entity).State = EntityState.Detached;// veri memoryde tracklenmesin diye.Çünkü remove ve update..
-      
+
       }
       return entity;
     }
@@ -51,12 +52,14 @@ namespace AuthServer.Data.Repositories
 
     public TEntity Update(TEntity entity)
     {
-      throw new NotImplementedException();
+      _dbContext.Entry(entity).State = EntityState.Modified;
+
+      return entity;
     }
 
-    public Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate)
+    public IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
     {
-      throw new NotImplementedException();
+      return _dbSet.Where(predicate);
     }
   }
 }
