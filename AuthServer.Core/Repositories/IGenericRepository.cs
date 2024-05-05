@@ -9,9 +9,9 @@ namespace AuthServer.Core.Repositories
 {
   public interface IGenericRepository<TEntity> where TEntity : class
   {
-    Task<TEntity> GetByIdAsync(int Id);
-    IQueryable<TEntity> GetAllAsync();
-    IQueryable<TEntity> Where(Expression <Func<TEntity,bool>> predicate);
+    Task<TEntity> GetByIdAsync(int id);
+    Task<IEnumerable<TEntity>> GetAllAsync();
+    Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate);
 
     Task AddAsync(TEntity entity);
 
