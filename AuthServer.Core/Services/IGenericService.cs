@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace AuthServer.Core.Services
 {
-  public interface IServisGeneric<TEntity, TDto> where TEntity : class where TDto : class //sadece class olma artı verdim
+  public interface IGenericService<TEntity, TDto> where TEntity : class where TDto : class //sadece class olma artı verdim
   {
     Task<Response<TDto>> GetByIdAsync(int id);
-    Task<Response<IQueryable<TDto>>>GetAllAsync();
+    Task<Response<IEnumerable<TDto>>>GetAllAsync();
     Task<Response<IQueryable<TDto>>> Where(Expression<Func<TEntity, bool>> predicate);
 
-    Task AddAsync(TDto dto);  
+    Task<Response<TDto>>AddAsync(TDto dto);  
 
     //bestpracticese gör remove ve update bir değer döndürülmemesi gerekir. Burda döndürdüm ama dönmemesi daha iyi olur
-    Task<Response<NoDataDto>> Remove(TDto dto);
+    Task<Response<NoDataDto>> Remove(int id);
 
-    Task<Response<NoDataDto>> Update(TDto dto);
+    Task<Response<NoDataDto>> Update(TDto dto,int id);
 
   }
 }
