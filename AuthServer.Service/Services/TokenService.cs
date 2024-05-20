@@ -66,21 +66,21 @@ namespace AuthServer.Service.Services
       new Claim(JwtRegisteredClaimNames.Sub, client.Id.ToString());
 
 
-        return claims;
+      return claims;
     }
 
     public TokenDto CreateToken(UserApp userApp)
     {
       var accessTokenExpiration = DateTime.Now.AddMinutes(_customTokenOptions.AccessTokenExpiration);
       var refreshTokenExpiration = DateTime.Now.AddMinutes(_customTokenOptions.RefreshTokenExpiration);
-      var securityKey= SignService.GetSymmetricSecurityKey( _customTokenOptions.SecurityKey);
+      var securityKey = SignService.GetSymmetricSecurityKey(_customTokenOptions.SecurityKey);
 
-      SigningCredentials signing = new SigningCredentials(securityKey,SecurityAlgorithms.HmacSha256Signature);
+      SigningCredentials signing = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
       JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(issuer: _customTokenOptions.Issuer, expires: accessTokenExpiration, notBefore: DateTime.Now, claims: GetClaims(userApp, _customTokenOptions.Audience),
         signingCredentials: signing);
       //notbefore: benim verdiğim zamandan itibaren geçersiz olmasın-accessexp kısmında oluşucak
 
-      var handler= new JwtSecurityTokenHandler();
+      var handler = new JwtSecurityTokenHandler();
       var token = handler.WriteToken(jwtSecurityToken);
 
       var tokenDto = new TokenDto
