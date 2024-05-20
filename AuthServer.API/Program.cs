@@ -1,3 +1,4 @@
+using AuthServer.Core.Configuration;
 using Microsoft.AspNetCore.Identity;
 using SharedLibrary.Configurations;
 
@@ -15,6 +16,10 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 
 var tokenOptionsSection = builder.Configuration.GetSection("TokenOptions"); //appsettingjson içeriðindeki json nesnesini getir
 builder.Services.Configure<CustomTokenOptions>(tokenOptionsSection); //sonrada configure et
+
+
+var clients = builder.Configuration.GetSection("Clients"); //appsettingjson içeriðindeki json nesnesini getir
+builder.Services.Configure<Client>(clients); //sonrada configure et
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
