@@ -1,8 +1,10 @@
-﻿using AuthServer.Core.DTOs;
+﻿using AuthServer.Core.Configuration;
+using AuthServer.Core.DTOs;
 using AuthServer.Core.Model;
 using AuthServer.Core.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using SharedLibrary.Configurations;
 using System;
 using System.Collections.Generic;
@@ -38,7 +40,8 @@ namespace AuthServer.Service.Services
 
     }
 
-    private IEnumerable<Claim> GetClaim(UserApp userApp, List<String> auidences)
+    //üyelik sistemi oluşturduğumda token almak için paylodda göstereceğim datalar
+    private IEnumerable<Claim> GetClaims(UserApp userApp, List<String> auidences)
     {
       //payloadda görünecekler
       var userList = new List<Claim> {
@@ -53,14 +56,64 @@ namespace AuthServer.Service.Services
 
       return userList;
     }
-    public TokenDto CreateToken(UserApp userApp)
+
+    //üyelik sistemi olmadan token oluşturmak istersem
+    private IEnumerable<Claim> GetClaimsByClient(Client client)
     {
-      throw new NotImplementedException();
+      var claims = new List<Claim>();
+      claims.AddRange(client.Audiences.Select(x => new Claim(JwtRegisteredClaimNames.Aud, x)));
+
+      new Claim(JwtRegisteredClaimNames.Sub, client.Id.ToString());
+
+
+        return claims;
     }
 
-    public ClientTokenDto CreateTokenByClient(UserApp userApp)
+    public TokenDto CreateToken(UserApp userApp)
     {
-      throw new NotImplementedException();
+      var accessTokenExpiration = DateTime.Now.AddMinutes(_customTokenOptions.AccessTokenExpiration);
+      var refreshTokenExpiration = DateTime.Now.AddMinutes(_customTokenOptions.RefreshTokenExpiration);
+      var securityKey= SignService.GetSymmetricSecurityKey( _customTokenOptions.SecurityKey);
+
+      SigningCredentials signing = new SigningCredentials(securityKey,SecurityAlgorithms.HmacSha256Signature);
+      JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(issuer: _customTokenOptions.Issuer, expires: accessTokenExpiration, notBefore: DateTime.Now, claims: GetClaims(userApp, _customTokenOptions.Audience),
+        signingCredentials: signing);
+      //notbefore: benim verdiğim zamandan itibaren geçersiz olmasın-accessexp kısmında oluşucak
+
+      var handler= new JwtSecurityTokenHandler();
+      var token = handler.WriteToken(jwtSecurityToken);
+
+      var tokenDto = new TokenDto
+      {
+        AccessToken = token,
+        RefreshToken = CreateRefreshToken(),//string token oluşuyor, jwt 3 parçadan oluşur
+        AccessTokenExpiration = accessTokenExpiration,
+        RefreshTokenExpiration = refreshTokenExpiration
+      };
+      return tokenDto;
+
+
+    }
+    //üyelik sistemiyle ilgili bilgileri barındırmaz kendi bilgilerini barındırır.
+    public ClientTokenDto CreateTokenByClient(Client client)
+    {
+      var accessTokenExpiration = DateTime.Now.AddMinutes(_customTokenOptions.AccessTokenExpiration);
+      var securityKey = SignService.GetSymmetricSecurityKey(_customTokenOptions.SecurityKey);
+
+      SigningCredentials signing = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
+      JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(issuer: _customTokenOptions.Issuer, expires: accessTokenExpiration, notBefore: DateTime.Now, claims: GetClaimsByClient(client),
+        signingCredentials: signing);
+      //notbefore: benim verdiğim zamandan itibaren geçersiz olmasın-accessexp kısmında oluşucak
+
+      var handler = new JwtSecurityTokenHandler();
+      var token = handler.WriteToken(jwtSecurityToken);
+
+      var clientTokenDto = new ClientTokenDto
+      {
+        AccessToken = token,
+        AccessTokenExpiration = accessTokenExpiration,
+      };
+      return clientTokenDto;
     }
   }
 }
