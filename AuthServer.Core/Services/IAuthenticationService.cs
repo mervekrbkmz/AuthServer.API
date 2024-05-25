@@ -13,12 +13,12 @@ namespace AuthServer.Core.Services
   {
 
     Task<Response<TokenDto>> CreateTokenAsync(LoginDto loginDto); 
-    Task<Response<TokenDto>> CreateTokenByRefreshTokenAsync(string refreshToken); 
+    Task<Response<TokenDto>> CreateTokenByRefreshToken(string refreshToken); 
 
     //refreshtoken sonlandırma-kullanıcı logout yapmak istediğinde-revoke:yetkinliğini kaldırmak
     //refreshtoken dan yeni token alabilir bu yüzden revoke kullanılabilir. datayı null atar
     Task<Response<NoDataDto>> RevokeRefreshTokenAsync(string refreshToken);
 
-    Task<Response<ClientTokenDto>> CreateTokenByClientAsync(ClientLoginDto clientLoginDto);
+    Response<ClientTokenDto> CreateTokenByClient(ClientLoginDto clientLoginDto);
   }
 }

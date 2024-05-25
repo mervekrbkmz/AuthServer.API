@@ -19,7 +19,7 @@ builder.Services.Configure<CustomTokenOptions>(tokenOptionsSection); //sonrada c
 
 
 var clients = builder.Configuration.GetSection("Clients"); //appsettingjson içeriðindeki json nesnesini getir
-builder.Services.Configure<Client>(clients); //sonrada configure et
+builder.Services.Configure<List<Client>>(clients); //sonrada configure et
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

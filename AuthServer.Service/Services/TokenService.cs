@@ -115,5 +115,10 @@ namespace AuthServer.Service.Services
       };
       return clientTokenDto;
     }
+
+    public ClientTokenDto CreateTokenByClient(UserApp userApp)
+    {
+      throw new NotImplementedException();
+    }
   }
 }
