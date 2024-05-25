@@ -13,7 +13,7 @@ namespace AuthServer.Service
   {
     public DtoMapper()
     {
-      CreateMap<ProductDto, Product>().ReverseMap(); //productdto nesnemi product dönüştrüp reverse ettim yani tam tersi de olabilir
+      CreateMap<ProductDto, Product>().ReverseMap(); //productdto nesnemi product dönüştrüp create daha sonra da reverse ettim yani tam tersi de olabilir
       CreateMap<UserAppDto, UserApp>().ReverseMap();
     }
   }
