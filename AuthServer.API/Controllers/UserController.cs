@@ -15,14 +15,14 @@ namespace AuthServer.API.Controllers
     {
       _userService = userService;
     }
-
+    [HttpPost]
     public async Task<IActionResult> CreateUser(CreateUserDto createUserDto)
     {
       var user = await _userService.CreateUserAsync(createUserDto);
       return ActionResultInstance(user);
     }
     [Authorize] //bu endpoint mutlaka bir token istiyor demek
-    [HttpGet("getuser")]
+    [HttpGet]
     public async Task<IActionResult> GetUser()
     {
       var user = await _userService.GetUserByNameAsync(HttpContext.User.Identity.Name); //framework name claims bulur.User.IDENTITY propertiesden alır.

@@ -61,6 +61,7 @@ builder.Services.AddAuthentication(options =>
     ValidAudience = tokenOptions.Audience[0],
     IssuerSigningKey = SignService.GetSymmetricSecurityKey(tokenOptions.SecurityKey),
     ValidateIssuerSigningKey = true,
+
     ValidateAudience = true,
     ValidateIssuer = true,
     ValidateLifetime = true,//ömrünü kontrol ediyoruz geçerli bir token mý geçersiz mi gibi..
