@@ -1,11 +1,16 @@
 ﻿using AuthServer.Core.DTOs;
 using AuthServer.Core.Model;
 using AuthServer.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 namespace AuthServer.API.Controllers
 {
+  [Authorize]
+  [Route("api/[controller]")]
+  [ApiController]
   public class ProductController : CustomBaseController
   {
+   
     private readonly IGenericService<Product, ProductDto> _productService;
     public ProductController(IGenericService<Product, ProductDto> productService)
     {
@@ -25,9 +30,10 @@ namespace AuthServer.API.Controllers
     [HttpPut]
     public async Task<IActionResult> UpdateProduct(ProductDto productDto)
     {
-      return ActionResultInstance( await _productService.Update(productDto,productDto.Id));
+      return ActionResultInstance(await _productService.Update(productDto, productDto.Id));
     }
-    [HttpDelete]
+    //api/product?id=2 gibi..
+    [HttpDelete("{id}")] //default valuetype--querystringden geleceği için Urlden almak istedim.
     public async Task<IActionResult> DeleteProduct(ProductDto productDto)
     {
       return ActionResultInstance(await _productService.Remove( productDto.Id));
