@@ -38,15 +38,15 @@ namespace AuthServer.Service.Services
 
     }
 
-    public async Task<Response<TokenDto>> CreateTokenAsync(LoginDto loginDto)
+    public  async Task<Response<TokenDto>> CreateTokenAsync(LoginDto loginDto)
     {
       if (loginDto == null) throw new ArgumentNullException(nameof(loginDto));
 
       var user = await _userManager.FindByEmailAsync(loginDto.Email);
-      if (user == null) return Response<TokenDto>.Fail("Emal or Password is wrong", 400, true); //clien hatası olduğu için 400 döndüm, bizden kaynaklı hatalarda 500 dönüyorum.
+      if (user == null) return Response<TokenDto>.Fail("Email or Password is wrong", 400, true); //clien hatası olduğu için 400 döndüm, bendn kaynaklı hatalarda 500 dönüyorum.
 
       var pass = await _userManager.CheckPasswordAsync(user, loginDto.Password);
-      if (!pass) return Response<TokenDto>.Fail("Emal or Password is wrong", 400, true);
+      if (!pass) return Response<TokenDto>.Fail("Email or Password is wrong", 400, true);
 
       //kullanıcı mail pass bilgileri alındı token oluşturma işlemi
 
@@ -55,7 +55,7 @@ namespace AuthServer.Service.Services
       var refreshToken = await _userRefreshTokenService.Where(x => x.UserId == user.Id).SingleOrDefaultAsync();
 
       if (refreshToken == null) await _userRefreshTokenService.AddAsync(new UserRefreshToken { UserId = user.Id, Code = token.RefreshToken, Expiration = token.RefreshTokenExpiration });
-      else { //dbden güncellicek ; önce entity memoride tutuyor 
+      else { //dbden güncellicek ; önce entity memoryde tutuyor 
         refreshToken.Code = token.RefreshToken; refreshToken.Expiration=token.RefreshTokenExpiration;
       }
 

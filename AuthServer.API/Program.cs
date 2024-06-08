@@ -40,7 +40,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddIdentity<UserApp, IdentityRole>(options =>
 {
-  options.User.RequireUniqueEmail = true;
+  //options.User.RequireUniqueEmail = false;
   options.Password.RequireNonAlphanumeric = false; //*?= etc.. characters
 }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();// þifre sýfýrlama, e posta doðrulama vs iþlemlerde, default bir token üretir.otomaitk bu kullanýlýr
 
