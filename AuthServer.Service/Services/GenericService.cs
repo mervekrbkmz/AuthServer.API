@@ -55,7 +55,7 @@ namespace AuthServer.Service.Services
     {
       var product = await _repository.GetByIdAsync(id);
       if (product == null)
-      {
+      { 
         return Response<TDto>.Fail("Id not found", 404, true);
       }
       var productDto = ObjectMapper.Mapper.Map<TDto>(product);
