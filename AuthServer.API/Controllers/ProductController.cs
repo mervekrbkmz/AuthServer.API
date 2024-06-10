@@ -34,9 +34,9 @@ namespace AuthServer.API.Controllers
     }
     //api/product?id=2 gibi..
     [HttpDelete("{id}")] //default valuetype--querystringden geleceği için Urlden almak istedim.
-    public async Task<IActionResult> DeleteProduct(ProductDto productDto)
+    public async Task<IActionResult> DeleteProduct(int id)
     {
-      return ActionResultInstance(await _productService.Remove( productDto.Id));
+      return ActionResultInstance(await _productService.Remove(id));
     }
   }
 }

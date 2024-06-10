@@ -1,6 +1,7 @@
 ﻿using AuthServer.Core.Repositories;
 using AuthServer.Core.Services;
 using AuthServer.Core.UnitOfWork;
+using AuthServer.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using SharedLibrary;
 using SharedLibrary.Dtos;
@@ -27,7 +28,7 @@ namespace AuthServer.Service.Services
     }
     public async Task<Response<TDto>> AddAsync(TDto dto)
     {
-
+    
       var entity = ObjectMapper.Mapper.Map<TEntity>(dto);
 
       await _repository.AddAsync(entity);
@@ -82,8 +83,8 @@ namespace AuthServer.Service.Services
       {
         return Response<NoDataDto>.Fail("id not found", 404, true);
       }
-      var updateEntity = ObjectMapper.Mapper.Map<TEntity>(dto);//update memoryde bir ıd daha tutar, getbyid fonksiyonunda biz id detached ettikki memoryde boş yere tutmasın. update işleminde zaten mevcut. state alıcak.
-      _repository.Update(dataExist);
+      var updateEntity = ObjectMapper.Mapper.Map(dto, dataExist);//update memoryde bir ıd daha tutar, getbyid fonksiyonunda biz id detached ettikki memoryde boş yere tutmasın. update işleminde zaten mevcut. state alıcak.
+      _repository.Update(updateEntity);
 
       await _unitOfWork.CommitAsync();
       return Response<NoDataDto>.Success(204); //content-bodyde data olmucak
