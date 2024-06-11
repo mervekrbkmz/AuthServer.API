@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServer.API", "AuthServer.API\AuthServer.API.csproj", "{BAB7EDF6-2095-4195-B0A4-C7853BF5AB4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.API", "AuthServer.API\AuthServer.API.csproj", "{BAB7EDF6-2095-4195-B0A4-C7853BF5AB4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServer.Core", "AuthServer.Core\AuthServer.Core.csproj", "{05C5F2FA-6B5B-4A71-B58F-0BEC9062A471}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Core", "AuthServer.Core\AuthServer.Core.csproj", "{05C5F2FA-6B5B-4A71-B58F-0BEC9062A471}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServer.Data", "AuthServer.Data\AuthServer.Data.csproj", "{06C97D25-5342-4685-90D1-13ED7FE53BC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Data", "AuthServer.Data\AuthServer.Data.csproj", "{06C97D25-5342-4685-90D1-13ED7FE53BC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServer.Service", "AuthServer.Service\AuthServer.Service.csproj", "{AA322D6E-BD91-491B-B87D-61EFFD6B5A27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Service", "AuthServer.Service\AuthServer.Service.csproj", "{AA322D6E-BD91-491B-B87D-61EFFD6B5A27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniApp1.API", "MiniApp1.API\MiniApp1.API.csproj", "{7FC9F90E-2DF2-4BF7-BE01-E0D791FD5CDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniAuth.API", "MiniApp1.API\MiniAuth.API.csproj", "{7FC9F90E-2DF2-4BF7-BE01-E0D791FD5CDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniApp2.API", "MiniApp2.API\MiniApp2.API.csproj", "{81C56834-905A-47C7-B968-7BC202D45271}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniAuth2.API", "MiniApp2.API\MiniAuth2.API.csproj", "{81C56834-905A-47C7-B968-7BC202D45271}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniApp3.API", "MiniApp3.API\MiniApp3.API.csproj", "{8C731573-B7D3-4EBC-8B97-953505CF5B32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniAuth3.API", "MiniApp3.API\MiniAuth3.API.csproj", "{8C731573-B7D3-4EBC-8B97-953505CF5B32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{4233AC5F-5B90-4193-8AE7-31FB7AF8B7FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{4233AC5F-5B90-4193-8AE7-31FB7AF8B7FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

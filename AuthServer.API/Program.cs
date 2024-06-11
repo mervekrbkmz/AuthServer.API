@@ -18,6 +18,7 @@ using Microsoft.OpenApi.Models;
 using SharedLibrary.Configurations;
 using System;
 using System.Collections.Generic;
+using SharedLibrary.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

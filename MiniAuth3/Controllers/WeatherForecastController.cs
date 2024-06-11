@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace MiniApp1.API.Controllers
+namespace MiniAuth3.Controllers
 {
   [ApiController]
   [Route("[controller]")]
