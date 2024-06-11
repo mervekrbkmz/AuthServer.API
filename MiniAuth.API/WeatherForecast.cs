@@ -1,4 +1,4 @@
-namespace MiniAuth3
+namespace MiniAuth.API
 {
   public class WeatherForecast
   {
