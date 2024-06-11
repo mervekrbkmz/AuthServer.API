@@ -11,13 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Data", "AuthServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Service", "AuthServer.Service\AuthServer.Service.csproj", "{AA322D6E-BD91-491B-B87D-61EFFD6B5A27}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniAuth.API", "MiniApp1.API\MiniAuth.API.csproj", "{7FC9F90E-2DF2-4BF7-BE01-E0D791FD5CDC}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniAuth3.API", "MiniApp3.API\MiniAuth3.API.csproj", "{8C731573-B7D3-4EBC-8B97-953505CF5B32}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{4233AC5F-5B90-4193-8AE7-31FB7AF8B7FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniAuth2.API", "MiniAuth2.API\MiniAuth2.API.csproj", "{502C7F80-C078-420A-9DEA-DD07BB6E9DB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniAuth.API", "MiniAuth.API\MiniAuth.API.csproj", "{B00D0CCE-0959-4CD5-8621-80C99EF1E15D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniAuth3.API", "MiniAuth3.API\MiniAuth3.API.csproj", "{B574ED97-B553-49CA-A80C-928D0A723F85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,14 +41,6 @@ Global
 		{AA322D6E-BD91-491B-B87D-61EFFD6B5A27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA322D6E-BD91-491B-B87D-61EFFD6B5A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA322D6E-BD91-491B-B87D-61EFFD6B5A27}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FC9F90E-2DF2-4BF7-BE01-E0D791FD5CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FC9F90E-2DF2-4BF7-BE01-E0D791FD5CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FC9F90E-2DF2-4BF7-BE01-E0D791FD5CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FC9F90E-2DF2-4BF7-BE01-E0D791FD5CDC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8C731573-B7D3-4EBC-8B97-953505CF5B32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C731573-B7D3-4EBC-8B97-953505CF5B32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C731573-B7D3-4EBC-8B97-953505CF5B32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C731573-B7D3-4EBC-8B97-953505CF5B32}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4233AC5F-5B90-4193-8AE7-31FB7AF8B7FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4233AC5F-5B90-4193-8AE7-31FB7AF8B7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4233AC5F-5B90-4193-8AE7-31FB7AF8B7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +49,14 @@ Global
 		{502C7F80-C078-420A-9DEA-DD07BB6E9DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{502C7F80-C078-420A-9DEA-DD07BB6E9DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{502C7F80-C078-420A-9DEA-DD07BB6E9DB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B00D0CCE-0959-4CD5-8621-80C99EF1E15D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B00D0CCE-0959-4CD5-8621-80C99EF1E15D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B00D0CCE-0959-4CD5-8621-80C99EF1E15D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B00D0CCE-0959-4CD5-8621-80C99EF1E15D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B574ED97-B553-49CA-A80C-928D0A723F85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B574ED97-B553-49CA-A80C-928D0A723F85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B574ED97-B553-49CA-A80C-928D0A723F85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B574ED97-B553-49CA-A80C-928D0A723F85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
