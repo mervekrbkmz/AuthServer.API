@@ -5,7 +5,7 @@ using SharedLibrary.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var app = builder.Build();
+
 builder.Services.Configure<CustomTokenOptions>(builder.Configuration.GetSection("TokenOption"));
 var tokenOptions = builder.Configuration.GetSection("TokenOption").Get<CustomTokenOptions>();
 
@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen(c =>
 {
   c.SwaggerDoc("v1", new OpenApiInfo { Title = "MiniAuth3.API", Version = "v1" });
 });
-
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
